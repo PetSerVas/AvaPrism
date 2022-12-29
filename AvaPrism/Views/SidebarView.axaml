@@ -1,0 +1,68 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="200"
+    d:DesignHeight="450"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Width="{Binding FlyoutWidth}"
+    x:Class="AvaPrism.Views.SidebarView">
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        <Style Selector="PathIcon">
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Margin" Value="4" />
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="4" />
+        </Style>
+    </UserControl.Styles>
+
+    <DockPanel>
+        <Button
+            DockPanel.Dock="Top"
+            ToolTip.Tip="Expand/Collapse"
+            Command="{Binding CmdFlyoutMenu}">
+            <StackPanel Orientation="Horizontal">
+                <PathIcon Data="{StaticResource HamburgerIcon}" />
+                <TextBlock Text="" />
+            </StackPanel>
+        </Button>
+        <Button
+            DockPanel.Dock="Bottom"
+            ToolTip.Tip="Settings"
+            Command="{Binding CmdSettings}">
+            <StackPanel Orientation="Horizontal">
+                <PathIcon Data="{StaticResource SettingsIcon}" />
+                <TextBlock Text="Settings" />
+            </StackPanel>
+        </Button>
+        <ScrollViewer>
+            <StackPanel>
+                <Button
+                    Command="{Binding CmdDashboard}"
+                    ToolTip.Tip="Dashboard">
+                    <StackPanel Orientation="Horizontal">
+                        <PathIcon Data="{StaticResource HomeIcon}" />
+                        <TextBlock Text="Dashboard" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Command="{Binding .}"
+                    ToolTip.Tip="Else">
+                    <StackPanel Orientation="Horizontal">
+                        <PathIcon Data="{StaticResource LockIcon}" />
+                        <TextBlock Text="Something Else" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+
+    </DockPanel>
+</UserControl>
